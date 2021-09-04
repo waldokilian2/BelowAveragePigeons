@@ -1,8 +1,80 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=9 format=2]
 
+[ext_resource path="res://grass_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Wizz.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Game assets/Backgrounds/layers/sky.png" type="Texture" id=3]
+[ext_resource path="res://Game assets/Backgrounds/layers/clouds_1.png" type="Texture" id=4]
+[ext_resource path="res://Game assets/Backgrounds/layers/ground_3.png" type="Texture" id=5]
+[ext_resource path="res://Game assets/Backgrounds/layers/ground_2.png" type="Texture" id=6]
+[ext_resource path="res://Game assets/Backgrounds/layers/ground_1.png" type="Texture" id=7]
+[ext_resource path="res://Game assets/Backgrounds/layers/rocks.png" type="Texture" id=8]
 
 [node name="Level1" type="Node2D"]
 
+[node name="Solid_Tiles" type="TileMap" parent="."]
+scale = Vector2( 0.4, 0.4 )
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 720892, -1073741824, 0, 1245180, -1073741824, 0, 1769468, -1073741824, 0, 2293756, -1073741824, 0, 2490368, 0, 0, 2490376, 0, 0, 2490384, 0, 0, 2490392, 0, 0, 2490400, 0, 0, 2490408, 0, 0, 2490416, 0, 0, 2490424, 0, 0, 2490432, 0, 0, 2490440, 0, 0, 2490447, 0, 0, 2490455, 0, 0, 2490462, 0, 0, 2490470, 0, 0, 2490478, 0, 0 )
+
 [node name="Wizz" parent="." instance=ExtResource( 2 )]
-position = Vector2( 213.937, 286.357 )
+position = Vector2( 138.812, 900.95 )
+
+[node name="Camera2D" type="Camera2D" parent="Wizz"]
+scale = Vector2( 0.609756, 0.609756 )
+current = true
+limit_left = 0
+limit_bottom = 1070
+limit_smoothed = true
+drag_margin_h_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.3
+drag_margin_top = 0.3
+drag_margin_right = 0.3
+editor_draw_limits = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Wizz/Camera2D"]
+
+[node name="Sky_sprite" type="Sprite" parent="Wizz/Camera2D/ParallaxBackground"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="far_hills" type="ParallaxLayer" parent="Wizz/Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="far_hills_sprite" type="Sprite" parent="Wizz/Camera2D/ParallaxBackground/far_hills"]
+texture = ExtResource( 8 )
+centered = false
+
+[node name="clouds" type="ParallaxLayer" parent="Wizz/Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="clouds_sprite" type="Sprite" parent="Wizz/Camera2D/ParallaxBackground/clouds"]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="mountains" type="ParallaxLayer" parent="Wizz/Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="mountains_sprite" type="Sprite" parent="Wizz/Camera2D/ParallaxBackground/mountains"]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="forrest_far" type="ParallaxLayer" parent="Wizz/Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="forrest_far_sprite" type="Sprite" parent="Wizz/Camera2D/ParallaxBackground/forrest_far"]
+texture = ExtResource( 6 )
+centered = false
+
+[node name="forrest_close" type="ParallaxLayer" parent="Wizz/Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.7, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="forrest_close_sprite" type="Sprite" parent="Wizz/Camera2D/ParallaxBackground/forrest_close"]
+texture = ExtResource( 5 )
+centered = false
