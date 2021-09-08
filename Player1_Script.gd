@@ -63,6 +63,7 @@ func lose_life() -> void:
 		$"Animated Sprite/ProgressBar/heart3".hide()
 
 #Implement on death logic
+# send through which player dies
 func on_player_death() -> void:
 	print("game over")
 	emit_signal("player_death")

@@ -214,5 +214,5 @@ position = Vector2( 280, 24 )
 [node name="Player2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1632, 16 )
 
-[connection signal="body_entered" from="fall_zone" to="Player1" method="_on_fall_zone_body_entered"]
 [connection signal="body_entered" from="fall_zone" to="Player2" method="_on_fall_zone_body_entered"]
+[connection signal="body_entered" from="fall_zone" to="Player1" method="_on_fall_zone_body_entered"]
