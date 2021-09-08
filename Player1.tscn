@@ -49,7 +49,7 @@ position = Vector2( -1.41425, 0 )
 scale = Vector2( 0.547343, 0.547343 )
 frames = ExtResource( 1 )
 animation = "idle"
-frame = 7
+frame = 19
 playing = true
 __meta__ = {
 "_edit_group_": true
@@ -58,10 +58,10 @@ __meta__ = {
 [node name="ProgressBar" type="ProgressBar" parent="Animated Sprite"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -414.0
-margin_top = -256.0
-margin_right = -98.0
-margin_bottom = -222.0
+margin_left = -402.899
+margin_top = -182.701
+margin_right = -86.8986
+margin_bottom = -148.701
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 max_value = 10.0
