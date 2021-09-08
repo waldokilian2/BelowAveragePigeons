@@ -1,11 +1,13 @@
-extends KinematicBody2D
+extends Player
 
-var velocity = Vector2(0,0)
-var speed = 500
-var lives = 3
-const JUMPFORCE = -1100
-const GRAVITY = 35
+onready var health = $Health
+onready var health_bar = $"Animated Sprite/ProgressBar"
 
+func _ready() -> void:
+	health.connect("changed", health_bar, "set_value")
+	health.connect("max_changed", health_bar, "set_max")
+	health.initialize()
+	
 func _physics_process(delta):
 	if Input.is_action_pressed("sprint"):
 		speed = 800
@@ -30,17 +32,23 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMPFORCE
 		
-	
-	
 	velocity = move_and_slide(velocity,Vector2.UP)
 	velocity.x = lerp(velocity.x,0,0.1)
 
 
 func _on_fall_zone_body_entered(body):
 	if body.name == "Player1":
-		if lives > 0:
-			lives-=1
-			position = Vector2(260,60)
-			print(lives)
-		else:
-			print("Game over")
+		health.set_current(0)
+
+
+#will be used to decrement num hearts player has a bit later
+func _on_Health_depleted() -> void:
+	if lives > 0:
+		lives-=1
+		health.set_current(health.max_amount)
+		position = Vector2(260,60)
+		print("Player 1 lives: " + str(lives))
+	else:
+		print("Game over")
+		queue_free()
+	
