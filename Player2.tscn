@@ -1,11 +1,37 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player2_SpriteFrames.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Player2_Script.gd" type="Script" id=2]
+[ext_resource path="res://Health.gd" type="Script" id=3]
+[ext_resource path="res://Game assets/heart.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 30.244
 height = 75.9557
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.207843, 0.745098, 0.172549, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 0.992157, 0.992157, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.219608, 0.207843, 0.207843, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 0.992157, 0.992157, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Player2" type="KinematicBody2D"]
 scale = Vector2( 0.88, 0.88 )
@@ -13,6 +39,9 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource( 3 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 10 )
@@ -22,5 +51,35 @@ shape = SubResource( 1 )
 scale = Vector2( 0.547, 0.547 )
 frames = ExtResource( 1 )
 animation = "idle"
-frame = 11
+frame = 5
 playing = true
+
+[node name="ProgressBar" type="ProgressBar" parent="Animated Sprite"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -414.0
+margin_top = -256.0
+margin_right = -98.0
+margin_bottom = -222.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+max_value = 10.0
+value = 10.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="heart1" type="Sprite" parent="Animated Sprite/ProgressBar"]
+position = Vector2( 241.098, -9.91324 )
+texture = ExtResource( 4 )
+
+[node name="heart2" type="Sprite" parent="Animated Sprite/ProgressBar"]
+position = Vector2( 274.337, -9.91327 )
+texture = ExtResource( 4 )
+
+[node name="heart3" type="Sprite" parent="Animated Sprite/ProgressBar"]
+position = Vector2( 307.576, -9.91324 )
+texture = ExtResource( 4 )
+
+[connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
