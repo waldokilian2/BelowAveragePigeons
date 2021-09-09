@@ -220,5 +220,5 @@ stream = ExtResource( 14 )
 volume_db = -5.0
 autoplay = true
 
-[connection signal="body_entered" from="fall_zone" to="Player2" method="_on_fall_zone_body_entered"]
 [connection signal="body_entered" from="fall_zone" to="Player1" method="_on_fall_zone_body_entered"]
+[connection signal="body_entered" from="fall_zone" to="Player2" method="_on_fall_zone_body_entered"]
