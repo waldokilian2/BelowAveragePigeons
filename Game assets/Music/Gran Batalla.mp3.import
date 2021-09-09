@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Gran Batalla.mp3-050bfad19867e833c27d526d9eadc26c.mp3str"
+
+[deps]
+
+source_file="res://Game assets/Music/Gran Batalla.mp3"
+dest_files=[ "res://.import/Gran Batalla.mp3-050bfad19867e833c27d526d9eadc26c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

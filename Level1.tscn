@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://grass_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Player1.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://pass_through_platforms_tileset.tres" type="TileSet" id=11]
 [ext_resource path="res://decoration_tileset.tres" type="TileSet" id=12]
 [ext_resource path="res://Game assets/particles.png" type="Texture" id=13]
+[ext_resource path="res://Game assets/Music/Gran Batalla.mp3" type="AudioStream" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2160, 0 )
@@ -213,6 +214,11 @@ position = Vector2( 280, 24 )
 
 [node name="Player2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1632, 16 )
+
+[node name="MusicBackground" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -5.0
+autoplay = true
 
 [connection signal="body_entered" from="fall_zone" to="Player2" method="_on_fall_zone_body_entered"]
 [connection signal="body_entered" from="fall_zone" to="Player1" method="_on_fall_zone_body_entered"]

@@ -33,9 +33,13 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("jump_P2") and is_on_floor():
 		velocity.y = JUMPFORCE
+		$SoundJump.play()
 		
 	velocity = move_and_slide(velocity,Vector2.UP)
 	velocity.x = lerp(velocity.x,0,0.1)
+	
+	if Input.is_action_just_pressed("shove_P2"):
+		$SoundShove.play()
 
 
 func _on_fall_zone_body_entered(body):
