@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player2_SpriteFrames.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Player2_Script.gd" type="Script" id=2]
 [ext_resource path="res://Health.gd" type="Script" id=3]
-[ext_resource path="res://Game assets/heart.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 30.244
@@ -52,7 +51,7 @@ shape = SubResource( 1 )
 scale = Vector2( 0.547, 0.547 )
 frames = ExtResource( 1 )
 animation = "idle"
-frame = 1
+frame = 11
 playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="Animated Sprite"]
@@ -64,23 +63,10 @@ margin_right = -89.5762
 margin_bottom = -148.815
 custom_styles/fg = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
-max_value = 10.0
-value = 10.0
+value = 100.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="heart1" type="Sprite" parent="Animated Sprite/ProgressBar"]
-position = Vector2( 241.098, -9.91324 )
-texture = ExtResource( 4 )
-
-[node name="heart2" type="Sprite" parent="Animated Sprite/ProgressBar"]
-position = Vector2( 274.337, -9.91327 )
-texture = ExtResource( 4 )
-
-[node name="heart3" type="Sprite" parent="Animated Sprite/ProgressBar"]
-position = Vector2( 307.576, -9.91324 )
-texture = ExtResource( 4 )
 
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]

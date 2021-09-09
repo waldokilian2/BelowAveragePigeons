@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player1_SpriteFrames_Orange.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Player1_Script.gd" type="Script" id=2]
 [ext_resource path="res://Health.gd" type="Script" id=3]
-[ext_resource path="res://Game assets/heart.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.207843, 0.745098, 0.172549, 1 )
@@ -49,7 +48,7 @@ position = Vector2( -1.41425, 0 )
 scale = Vector2( 0.547343, 0.547343 )
 frames = ExtResource( 1 )
 animation = "idle"
-frame = 19
+frame = 14
 playing = true
 __meta__ = {
 "_edit_group_": true
@@ -64,24 +63,11 @@ margin_right = -86.8986
 margin_bottom = -148.701
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
-max_value = 10.0
-value = 10.0
+value = 100.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="heart1" type="Sprite" parent="Animated Sprite/ProgressBar"]
-position = Vector2( 243.63, -9.7466 )
-texture = ExtResource( 5 )
-
-[node name="heart2" type="Sprite" parent="Animated Sprite/ProgressBar"]
-position = Vector2( 276.848, -9.7466 )
-texture = ExtResource( 5 )
-
-[node name="heart3" type="Sprite" parent="Animated Sprite/ProgressBar"]
-position = Vector2( 310.066, -9.7466 )
-texture = ExtResource( 5 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 10 )

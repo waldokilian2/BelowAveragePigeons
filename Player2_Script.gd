@@ -3,7 +3,6 @@ extends Player
 signal player_death
 onready var health = $Health
 onready var health_bar = $"Animated Sprite/ProgressBar"
-const SPAWN_POSITION: = Vector2(1600,60)
 
 func _ready() -> void:
 	health.connect("changed", health_bar, "set_value")
@@ -43,26 +42,7 @@ func _on_fall_zone_body_entered(body):
 		health.set_current(0)
 
 func _on_Health_depleted() -> void:
-	lose_life()
-	if lives == 0:
-		on_player_death()
-		return
-	health.set_current(health.max_amount)
-	position = SPAWN_POSITION
-	print("Player 2 lives: " + str(lives))
-
-	
-func lose_life() -> void:
-	lives -= 1
-	if lives == 2:
-		$"Animated Sprite/ProgressBar/heart1".hide()
-	elif lives == 1:
-		$"Animated Sprite/ProgressBar/heart2".hide()
-	elif lives == 0:
-		$"Animated Sprite/ProgressBar/heart3".hide()
-
-#Implement on death logic
-func on_player_death() -> void:
 	print("game over")
 	emit_signal("player_death")
+
 
