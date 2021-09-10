@@ -64,6 +64,8 @@ func set_area_knockback(velocity: Vector2) -> Vector2:
 	return velocity.normalized()
 	
 func attack() -> void:
+	print("started")
+	$ShoveAnimation.play("shove")
 	attack_timer.one_shot
 	attack_timer.start(0.1)
 	attack_collision.disabled = false
@@ -89,3 +91,6 @@ func _on_HitArea_area_entered(area: Area2D) -> void:
 func _on_AttackDurationTimer_timeout() -> void:
 	attack_collision.disabled = true
 
+func _on_AnimatedSprite_animation_finished():
+	print("finished")
+	$ShoveAnimation.stop()

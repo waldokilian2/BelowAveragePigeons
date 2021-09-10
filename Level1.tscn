@@ -15,7 +15,7 @@
 [ext_resource path="res://Game assets/particles.png" type="Texture" id=13]
 [ext_resource path="res://Level1.gd" type="Script" id=14]
 
-[sub_resource type="Environment" id=7]
+[sub_resource type="Environment" id=1]
 background_mode = 4
 auto_exposure_max_luma = 0.62
 ssao_radius = 41.99
@@ -66,7 +66,7 @@ angle_random = 1.0
 scale = 1.18
 color = Color( 0.00784314, 0.666667, 0.184314, 1 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 2160, 0 )
 
 [node name="Level1" type="Node2D"]
@@ -79,7 +79,7 @@ position = Vector2( 280, 24 )
 position = Vector2( 1632, 16 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 7 )
+environment = SubResource( 1 )
 
 [node name="solid_tiles" type="TileMap" parent="WorldEnvironment"]
 scale = Vector2( 0.2, 0.2 )
@@ -238,7 +238,7 @@ scale = Vector2( 2, 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fall_zone"]
 position = Vector2( 40, 76 )
-shape = SubResource( 1 )
+shape = SubResource( 7 )
 one_way_collision = true
 
 [node name="HealthTickTimer" type="Timer" parent="."]
@@ -247,6 +247,6 @@ autostart = true
 
 [connection signal="player_death" from="Player1" to="." method="_on_Player1_player_death"]
 [connection signal="player_death" from="Player2" to="." method="_on_Player2_player_death"]
-[connection signal="body_entered" from="fall_zone" to="Player1" method="_on_fall_zone_body_entered"]
 [connection signal="body_entered" from="fall_zone" to="Player2" method="_on_fall_zone_body_entered"]
+[connection signal="body_entered" from="fall_zone" to="Player1" method="_on_fall_zone_body_entered"]
 [connection signal="timeout" from="HealthTickTimer" to="." method="_on_HealthTickTimer_timeout"]

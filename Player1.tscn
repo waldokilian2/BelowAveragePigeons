@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player1_SpriteFrames_Orange.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Player1_Script.gd" type="Script" id=2]
 [ext_resource path="res://Health.gd" type="Script" id=3]
 [ext_resource path="res://AttackArea.gd" type="Script" id=4]
+[ext_resource path="res://ShoveAnimation.tres" type="SpriteFrames" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.207843, 0.745098, 0.172549, 1 )
@@ -40,7 +41,7 @@ extents = Vector2( 36.3636, 72.7273 )
 extents = Vector2( 54.5455, 81.8182 )
 
 [node name="Player1" type="KinematicBody2D"]
-position = Vector2( 72, 80 )
+position = Vector2( 56.6494, 84.0045 )
 scale = Vector2( 0.88, 0.88 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -55,7 +56,6 @@ position = Vector2( -1.41425, 0 )
 scale = Vector2( 0.547343, 0.547343 )
 frames = ExtResource( 1 )
 animation = "idle"
-frame = 19
 playing = true
 __meta__ = {
 "_edit_group_": true
@@ -97,6 +97,14 @@ disabled = true
 [node name="HitBox" type="CollisionShape2D" parent="HitArea"]
 shape = SubResource( 5 )
 
+[node name="ShoveAnimation" type="AnimatedSprite" parent="."]
+position = Vector2( 67.5004, -54.6071 )
+frames = ExtResource( 5 )
+animation = "shove"
+frame = 5
+playing = true
+
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
 [connection signal="timeout" from="AttackDurationTimer" to="." method="_on_AttackDurationTimer_timeout"]
 [connection signal="area_entered" from="HitArea" to="." method="_on_HitArea_area_entered"]
+[connection signal="animation_finished" from="ShoveAnimation" to="." method="_on_AnimatedSprite_animation_finished"]
