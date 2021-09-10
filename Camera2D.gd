@@ -1,7 +1,7 @@
 extends Camera2D
 
-onready var p1 = get_parent().get_node("Player1")
-onready var p2 = get_parent().get_node("Player2")
+onready var p1 = get_parent().get_parent().get_node("Player1")
+onready var p2 = get_parent().get_parent().get_node("Player2")
 
 var zoommin = 0.8
 var zoommax = 1
