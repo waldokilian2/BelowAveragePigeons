@@ -41,20 +41,22 @@ func _physics_process(delta):
 	else:
 		$"Animated Sprite".play("idle")
 	
-	if not is_on_floor():
-		$"Animated Sprite".play("jump")
-	
 	if Input.is_action_just_pressed("attack_P1"):
 		attack()
 		
 	velocity.y += GRAVITY
 	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMPFORCE
+	attack_area.knockback_vector = set_area_knockback(velocity)
 		
 	velocity = move_and_slide(velocity,Vector2.UP)
 	velocity.x = lerp(velocity.x,0,0.1)
-	attack_area.knockback_vector = set_area_knockback(velocity)
+	if not is_on_floor():
+		$"Animated Sprite".play("jump")
+		
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMPFORCE
+		
+	
 
 func set_area_knockback(velocity: Vector2) -> Vector2:
 	if velocity.x < 1:
