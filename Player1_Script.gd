@@ -84,7 +84,7 @@ func on_player_death() -> void:
 
 func _on_HitArea_area_entered(area: Area2D) -> void:
 	if area.is_in_group("melee_attack_p2"):
-		knockback = area.knockback_vector * 500
+		knockback = area.knockback_vector * 300
 
 func _on_AttackDurationTimer_timeout() -> void:
 	attack_collision.disabled = true
