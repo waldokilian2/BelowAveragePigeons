@@ -55,6 +55,7 @@ position = Vector2( -1.41425, 0 )
 scale = Vector2( 0.547343, 0.547343 )
 frames = ExtResource( 1 )
 animation = "idle"
+frame = 19
 playing = true
 __meta__ = {
 "_edit_group_": true
