@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player2_SpriteFrames.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Player2_Script.gd" type="Script" id=2]
@@ -32,6 +32,9 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 54.5455, 81.8182 )
+
 [node name="Player2" type="KinematicBody2D"]
 position = Vector2( 0, 8 )
 scale = Vector2( 0.88, 0.88 )
@@ -51,7 +54,7 @@ shape = SubResource( 1 )
 scale = Vector2( 0.547, 0.547 )
 frames = ExtResource( 1 )
 animation = "idle"
-frame = 11
+frame = 13
 playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="Animated Sprite"]
@@ -69,4 +72,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HitArea" type="Area2D" parent="."]
+
+[node name="HitBox" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource( 4 )
+
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
+[connection signal="area_entered" from="HitArea" to="." method="_on_HitArea_area_entered"]
