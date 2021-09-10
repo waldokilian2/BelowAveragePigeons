@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 class_name Player 
 
+var knockback := Vector2.ZERO
 var lives: = 3
 var velocity: = Vector2(0,0)
 var speed: = 500

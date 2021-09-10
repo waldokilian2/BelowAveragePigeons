@@ -11,6 +11,8 @@ func _ready() -> void:
 	health.initialize()
 
 func _physics_process(delta):
+	knockback = knockback.move_toward(Vector2.ZERO, 200 * delta)
+	knockback = move_and_slide(knockback)
 	if Input.is_action_pressed("sprint"):
 		speed = 800
 	else:
@@ -66,3 +68,7 @@ func on_player_death() -> void:
 	print("game over")
 	emit_signal("player_death")
 
+func _on_HitArea_area_entered(area: Area2D) -> void:
+	if area.is_in_group("melee_attack"):
+		print("I've been hit, Knockback val : " + str(area.knockback_vector))
+		knockback = area.knockback_vector * 500
