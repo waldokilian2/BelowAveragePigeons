@@ -36,10 +36,10 @@ corner_radius_bottom_left = 8
 radius = 30.244
 height = 75.9557
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 36.3636, 72.7273 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 54.5455, 81.8182 )
 
 [node name="Player2" type="KinematicBody2D"]
@@ -57,7 +57,7 @@ script = ExtResource( 3 )
 scale = Vector2( 0.547, 0.547 )
 frames = ExtResource( 1 )
 animation = "idle"
-frame = 5
+frame = 4
 playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="Animated Sprite"]
@@ -86,7 +86,7 @@ script = ExtResource( 4 )
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2( 72.7273, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 disabled = true
 
 [node name="ShoveAnimation" type="AnimatedSprite" parent="AttackArea/AttackCollision"]
@@ -100,7 +100,7 @@ animation = "shove"
 [node name="HitArea" type="Area2D" parent="."]
 
 [node name="HitBox" type="CollisionShape2D" parent="HitArea"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )

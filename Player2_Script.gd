@@ -1,6 +1,6 @@
 extends Player
 
-signal player_death(loser)
+signal player_death
 onready var attack_animation = $AttackArea/AttackCollision/ShoveAnimation
 onready var health_bar = $"Animated Sprite/ProgressBar"
 onready var attack_collision = $AttackArea/AttackCollision
@@ -82,7 +82,7 @@ func _on_fall_zone_body_entered(body):
 
 func _on_Health_depleted() -> void:
 	print("game over")
-	emit_signal("player_death","Player2")
+	emit_signal("player_death")
 
 func _on_HitArea_area_entered(area: Area2D) -> void:
 	if area.is_in_group("melee_attack_p1"):
