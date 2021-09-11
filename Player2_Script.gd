@@ -1,11 +1,13 @@
 extends Player
 
 signal player_death
-onready var health = $Health
+onready var attack_animation = $AttackArea/AttackCollision/ShoveAnimation
 onready var health_bar = $"Animated Sprite/ProgressBar"
 onready var attack_collision = $AttackArea/AttackCollision
 onready var attack_timer = $AttackDurationTimer
 onready var attack_area = $AttackArea
+onready var health = $Health
+
 func _ready() -> void:
 	health.connect("changed", health_bar, "set_value")
 	health.connect("max_changed", health_bar, "set_max")
@@ -53,9 +55,21 @@ func _physics_process(delta):
 		velocity.y = JUMPFORCE
 
 func attack() -> void:
+	set_animation()
+	set_attack_timer()
+	attack_collision.disabled = false
+
+func set_animation() -> void:
+	if direction.x == -1:
+		attack_animation.flip_h = true
+	else:
+		attack_animation.flip_h = false
+	$ShoveSound.play()
+	attack_animation.play("shove")
+
+func set_attack_timer() -> void:
 	attack_timer.one_shot
 	attack_timer.start(0.1)
-	attack_collision.disabled = false
 	
 func set_area_knockback(velocity: Vector2) -> Vector2:
 	if velocity.x < 1:
@@ -76,3 +90,7 @@ func _on_HitArea_area_entered(area: Area2D) -> void:
 		
 func _on_AttackDurationTimer_timeout() -> void:
 	attack_collision.disabled = true
+
+
+func _on_ShoveAnimation_animation_finished() -> void:
+	attack_animation.stop()

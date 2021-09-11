@@ -6,6 +6,7 @@ onready var attack_collision = $AttackArea/AttackCollision
 onready var attack_timer = $AttackDurationTimer
 onready var health_bar = $"Animated Sprite/ProgressBar"
 onready var attack_area = $AttackArea
+onready var attack_animation = $AttackArea/AttackCollision/ShoveAnimation
 const SPAWN_POSITION: = Vector2(260,60)
 
 func _ready() -> void:
@@ -47,7 +48,6 @@ func _physics_process(delta):
 	velocity.y += GRAVITY
 	
 	attack_area.knockback_vector = set_area_knockback(velocity)
-		
 	velocity = move_and_slide(velocity,Vector2.UP)
 	velocity.x = lerp(velocity.x,0,0.1)
 	if not is_on_floor():
@@ -56,8 +56,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		$JumpSound.play()
 		velocity.y = JUMPFORCE
-		
-	
 
 func set_area_knockback(velocity: Vector2) -> Vector2:
 	if velocity.x < 1:
@@ -65,13 +63,22 @@ func set_area_knockback(velocity: Vector2) -> Vector2:
 	return velocity.normalized()
 	
 func attack() -> void:
-	print("started")
+	set_animation()
+	set_attack_timer()
+	attack_collision.disabled = false
+
+func set_animation() -> void:
+	if direction.x == -1:
+		attack_animation.flip_h = true
+	else:
+		attack_animation.flip_h = false
 	$ShoveSound.play()
-	$ShoveAnimation.play("shove")
+	attack_animation.play("shove")
+
+func set_attack_timer() -> void:
 	attack_timer.one_shot
 	attack_timer.start(0.1)
-	attack_collision.disabled = false
-	
+
 func _on_fall_zone_body_entered(body):
 	if body.name == "Player1":
 		health.set_current(0)
@@ -94,5 +101,5 @@ func _on_AttackDurationTimer_timeout() -> void:
 	attack_collision.disabled = true
 
 func _on_AnimatedSprite_animation_finished():
-	print("finished")
-	$ShoveAnimation.stop()
+	attack_animation.stop()
+

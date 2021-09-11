@@ -243,7 +243,7 @@ shape = SubResource( 7 )
 one_way_collision = true
 
 [node name="HealthTickTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.1
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -93,18 +93,18 @@ position = Vector2( 72.7273, 0 )
 shape = SubResource( 4 )
 disabled = true
 
+[node name="ShoveAnimation" type="AnimatedSprite" parent="AttackArea/AttackCollision"]
+position = Vector2( 29.4717, 4.74026 )
+scale = Vector2( 1.5019, 1.5019 )
+frames = ExtResource( 5 )
+animation = "shove"
+
 [node name="AttackDurationTimer" type="Timer" parent="."]
 
 [node name="HitArea" type="Area2D" parent="."]
 
 [node name="HitBox" type="CollisionShape2D" parent="HitArea"]
 shape = SubResource( 5 )
-
-[node name="ShoveAnimation" type="AnimatedSprite" parent="."]
-position = Vector2( 102.199, 4.74026 )
-scale = Vector2( 1.5019, 1.5019 )
-frames = ExtResource( 5 )
-animation = "shove"
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
@@ -115,6 +115,7 @@ stream = ExtResource( 6 )
 pitch_scale = 0.65
 
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
+[connection signal="animation_finished" from="AttackArea/AttackCollision/ShoveAnimation" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackDurationTimer" to="." method="_on_AttackDurationTimer_timeout"]
 [connection signal="area_entered" from="HitArea" to="." method="_on_HitArea_area_entered"]
 [connection signal="animation_finished" from="ShoveAnimation" to="." method="_on_AnimatedSprite_animation_finished"]

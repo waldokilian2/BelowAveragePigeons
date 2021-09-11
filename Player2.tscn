@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player2_SpriteFrames.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Player2_Script.gd" type="Script" id=2]
 [ext_resource path="res://Health.gd" type="Script" id=3]
 [ext_resource path="res://AttackArea.gd" type="Script" id=4]
+[ext_resource path="res://ShoveAnimation.tres" type="SpriteFrames" id=5]
+[ext_resource path="res://Game assets/Jump.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Game assets/Shove.mp3" type="AudioStream" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 30.244
@@ -58,7 +61,6 @@ shape = SubResource( 1 )
 scale = Vector2( 0.547, 0.547 )
 frames = ExtResource( 1 )
 animation = "idle"
-frame = 11
 playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="Animated Sprite"]
@@ -91,8 +93,23 @@ position = Vector2( 72.7273, 0 )
 shape = SubResource( 5 )
 disabled = true
 
+[node name="ShoveAnimation" type="AnimatedSprite" parent="AttackArea/AttackCollision"]
+position = Vector2( 29.4717, 4.74026 )
+scale = Vector2( 1.5019, 1.5019 )
+frames = ExtResource( 5 )
+animation = "shove"
+
 [node name="AttackDurationTimer" type="Timer" parent="."]
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+pitch_scale = 1.44
+
+[node name="ShoveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+pitch_scale = 0.65
 
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
 [connection signal="area_entered" from="HitArea" to="." method="_on_HitArea_area_entered"]
+[connection signal="animation_finished" from="AttackArea/AttackCollision/ShoveAnimation" to="." method="_on_ShoveAnimation_animation_finished"]
 [connection signal="timeout" from="AttackDurationTimer" to="." method="_on_AttackDurationTimer_timeout"]
