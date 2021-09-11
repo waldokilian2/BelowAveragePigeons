@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Shove.mp3-6092f50dd96a98f2476ae8144c4de163.mp3str"
+
+[deps]
+
+source_file="res://Game assets/Shove.mp3"
+dest_files=[ "res://.import/Shove.mp3-6092f50dd96a98f2476ae8144c4de163.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

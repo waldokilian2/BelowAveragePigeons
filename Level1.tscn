@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://grass_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Player1.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://decoration_tileset.tres" type="TileSet" id=12]
 [ext_resource path="res://Game assets/particles.png" type="Texture" id=13]
 [ext_resource path="res://Level1.gd" type="Script" id=14]
+[ext_resource path="res://Game assets/Gran Batalla.mp3" type="AudioStream" id=15]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -245,8 +246,13 @@ one_way_collision = true
 wait_time = 2.0
 autostart = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -8.0
+autoplay = true
+
 [connection signal="player_death" from="Player1" to="." method="_on_Player1_player_death"]
 [connection signal="player_death" from="Player2" to="." method="_on_Player2_player_death"]
-[connection signal="body_entered" from="fall_zone" to="Player2" method="_on_fall_zone_body_entered"]
 [connection signal="body_entered" from="fall_zone" to="Player1" method="_on_fall_zone_body_entered"]
+[connection signal="body_entered" from="fall_zone" to="Player2" method="_on_fall_zone_body_entered"]
 [connection signal="timeout" from="HealthTickTimer" to="." method="_on_HealthTickTimer_timeout"]

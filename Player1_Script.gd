@@ -54,6 +54,7 @@ func _physics_process(delta):
 		$"Animated Sprite".play("jump")
 		
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		$JumpSound.play()
 		velocity.y = JUMPFORCE
 		
 	
@@ -65,6 +66,7 @@ func set_area_knockback(velocity: Vector2) -> Vector2:
 	
 func attack() -> void:
 	print("started")
+	$ShoveSound.play()
 	$ShoveAnimation.play("shove")
 	attack_timer.one_shot
 	attack_timer.start(0.1)
