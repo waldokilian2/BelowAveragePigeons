@@ -8,11 +8,7 @@
 [ext_resource path="res://Game assets/Jump.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Game assets/Shove.mp3" type="AudioStream" id=7]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 30.244
-height = 75.9557
-
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.207843, 0.745098, 0.172549, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -24,7 +20,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.219608, 0.207843, 0.207843, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -36,11 +32,15 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 54.5455, 81.8182 )
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 30.244
+height = 75.9557
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 36.3636, 72.7273 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 54.5455, 81.8182 )
 
 [node name="Player2" type="KinematicBody2D"]
 position = Vector2( 0, 8 )
@@ -53,14 +53,11 @@ __meta__ = {
 [node name="Health" type="Node" parent="."]
 script = ExtResource( 3 )
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 10 )
-shape = SubResource( 1 )
-
 [node name="Animated Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.547, 0.547 )
 frames = ExtResource( 1 )
 animation = "idle"
+frame = 5
 playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="Animated Sprite"]
@@ -70,18 +67,17 @@ margin_left = -405.576
 margin_top = -182.815
 margin_right = -89.5762
 margin_bottom = -148.815
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 value = 100.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HitArea" type="Area2D" parent="."]
-
-[node name="HitBox" type="CollisionShape2D" parent="HitArea"]
-shape = SubResource( 4 )
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 10 )
+shape = SubResource( 3 )
 
 [node name="AttackArea" type="Area2D" parent="." groups=[
 "melee_attack_p2",
@@ -101,6 +97,11 @@ animation = "shove"
 
 [node name="AttackDurationTimer" type="Timer" parent="."]
 
+[node name="HitArea" type="Area2D" parent="."]
+
+[node name="HitBox" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource( 4 )
+
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 pitch_scale = 1.44
@@ -110,6 +111,6 @@ stream = ExtResource( 7 )
 pitch_scale = 0.65
 
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
-[connection signal="area_entered" from="HitArea" to="." method="_on_HitArea_area_entered"]
 [connection signal="animation_finished" from="AttackArea/AttackCollision/ShoveAnimation" to="." method="_on_ShoveAnimation_animation_finished"]
 [connection signal="timeout" from="AttackDurationTimer" to="." method="_on_AttackDurationTimer_timeout"]
+[connection signal="area_entered" from="HitArea" to="." method="_on_HitArea_area_entered"]

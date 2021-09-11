@@ -23,6 +23,10 @@ _global_script_class_icons={
 config/name="What's Popping"
 run/main_scene="res://startScreen.tscn"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [display]
 
 window/size/width=1920

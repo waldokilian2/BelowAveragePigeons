@@ -11,7 +11,11 @@ func _on_HealthTickTimer_timeout() -> void:
 #Implement rest of death logic here
 func _on_Player1_player_death() -> void:
 	timer.stop()
+	Global.winner = 2
+	get_tree().change_scene("res://GameOverScreen.tscn")
 
 #Implement rest of death logic here
 func _on_Player2_player_death() -> void:
 	timer.stop()
+	Global.winner = 1
+	get_tree().change_scene("res://GameOverScreen.tscn")

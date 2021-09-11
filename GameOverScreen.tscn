@@ -1,0 +1,118 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://ParallaxBackground.gd" type="Script" id=1]
+[ext_resource path="res://Game assets/Backgrounds/layers/ground_3.png" type="Texture" id=2]
+[ext_resource path="res://Game assets/Backgrounds/layers/ground_1.png" type="Texture" id=3]
+[ext_resource path="res://Game assets/Backgrounds/layers/sky.png" type="Texture" id=4]
+[ext_resource path="res://Game assets/Backgrounds/layers/ground_2.png" type="Texture" id=5]
+[ext_resource path="res://Game assets/Backgrounds/layers/rocks.png" type="Texture" id=6]
+[ext_resource path="res://Game assets/Backgrounds/layers/clouds_1.png" type="Texture" id=7]
+[ext_resource path="res://Game assets/GameOver.png" type="Texture" id=8]
+[ext_resource path="res://MainMenuButton.gd" type="Script" id=9]
+[ext_resource path="res://PlayAgainButton.gd" type="Script" id=10]
+[ext_resource path="res://Game assets/MainMenuButton.png" type="Texture" id=11]
+[ext_resource path="res://Game assets/PlayAgainButton.png" type="Texture" id=12]
+[ext_resource path="res://WinnerScript.gd" type="Script" id=13]
+[ext_resource path="res://Game assets/GameOverSound.mp3" type="AudioStream" id=14]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enable = true
+script = ExtResource( 1 )
+
+[node name="far_hills2" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -6
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sky_sprite" type="Sprite" parent="ParallaxBackground/far_hills2"]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="far_hills" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -4
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="far_hills_sprite" type="Sprite" parent="ParallaxBackground/far_hills"]
+texture = ExtResource( 6 )
+centered = false
+
+[node name="clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -3
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="clouds_sprite" type="Sprite" parent="ParallaxBackground/clouds"]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="mountains" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -2
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="mountains_sprite" type="Sprite" parent="ParallaxBackground/mountains"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="forrest_far" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -2
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="forrest_far_sprite" type="Sprite" parent="ParallaxBackground/forrest_far"]
+texture = ExtResource( 5 )
+centered = false
+
+[node name="forrest_close" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.7, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="forrest_close_sprite" type="Sprite" parent="ParallaxBackground/forrest_close"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="GameOver" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 975.637, 329.738 )
+scale = Vector2( 1.52749, 1.52749 )
+texture = ExtResource( 8 )
+
+[node name="MainMenuButton" type="Button" parent="."]
+margin_left = 52.1356
+margin_top = 913.214
+margin_right = 558.136
+margin_bottom = 1039.21
+icon = ExtResource( 11 )
+flat = true
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayAgainButton" type="Button" parent="."]
+margin_left = 1345.43
+margin_top = 898.077
+margin_right = 1861.43
+margin_bottom = 1037.08
+icon = ExtResource( 12 )
+flat = true
+script = ExtResource( 10 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 945.28, 698.023 )
+script = ExtResource( 13 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -9.143
+autoplay = true
+
+[connection signal="pressed" from="MainMenuButton" to="MainMenuButton" method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="PlayAgainButton" to="PlayAgainButton" method="_on_PlayAgainButton_pressed"]

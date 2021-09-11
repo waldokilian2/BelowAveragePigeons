@@ -118,4 +118,3 @@ pitch_scale = 0.65
 [connection signal="animation_finished" from="AttackArea/AttackCollision/ShoveAnimation" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackDurationTimer" to="." method="_on_AttackDurationTimer_timeout"]
 [connection signal="area_entered" from="HitArea" to="." method="_on_HitArea_area_entered"]
-[connection signal="animation_finished" from="ShoveAnimation" to="." method="_on_AnimatedSprite_animation_finished"]
