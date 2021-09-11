@@ -217,11 +217,11 @@ position = Vector2( 280, 24 )
 position = Vector2( 1632, 16 )
 
 [node name="HealthTickTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.1
 autostart = true
 
-[connection signal="body_entered" from="fall_zone" to="Player2" method="_on_fall_zone_body_entered"]
 [connection signal="body_entered" from="fall_zone" to="Player1" method="_on_fall_zone_body_entered"]
+[connection signal="body_entered" from="fall_zone" to="Player2" method="_on_fall_zone_body_entered"]
 [connection signal="player_death" from="Player1" to="." method="_on_Player1_player_death"]
 [connection signal="player_death" from="Player2" to="." method="_on_Player2_player_death"]
 [connection signal="timeout" from="HealthTickTimer" to="." method="_on_HealthTickTimer_timeout"]
