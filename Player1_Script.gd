@@ -102,3 +102,4 @@ func _on_AttackDurationTimer_timeout() -> void:
 
 func _on_AnimatedSprite_animation_finished():
 	attack_animation.stop()
+
