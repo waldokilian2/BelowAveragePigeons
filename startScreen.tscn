@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Game assets/Backgrounds/layers/ground_3.png" type="Texture" id=1]
+[ext_resource path="res://Game assets/Backgrounds/layers/rocks.png" type="Texture" id=2]
+[ext_resource path="res://Game assets/Backgrounds/layers/ground_1.png" type="Texture" id=3]
+[ext_resource path="res://Game assets/Backgrounds/layers/sky.png" type="Texture" id=4]
+[ext_resource path="res://Game assets/Backgrounds/layers/ground_2.png" type="Texture" id=5]
+[ext_resource path="res://Game assets/Backgrounds/layers/clouds_1.png" type="Texture" id=6]
+[ext_resource path="res://Game assets/logo.png" type="Texture" id=7]
+[ext_resource path="res://Game assets/Fonts/Zombie_Holocaust.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://PlayButton.gd" type="Script" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+outline_size = 2
+outline_color = Color( 0.054902, 0.556863, 0, 1 )
+font_data = ExtResource( 8 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="far_hills2" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -6
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sky_sprite" type="Sprite" parent="ParallaxBackground/far_hills2"]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="far_hills" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -4
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="far_hills_sprite" type="Sprite" parent="ParallaxBackground/far_hills"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -3
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="clouds_sprite" type="Sprite" parent="ParallaxBackground/clouds"]
+texture = ExtResource( 6 )
+centered = false
+
+[node name="mountains" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -2
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="mountains_sprite" type="Sprite" parent="ParallaxBackground/mountains"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="forrest_far" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -2
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="forrest_far_sprite" type="Sprite" parent="ParallaxBackground/forrest_far"]
+texture = ExtResource( 5 )
+centered = false
+
+[node name="forrest_close" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.7, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="forrest_close_sprite" type="Sprite" parent="ParallaxBackground/forrest_close"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 0.403922 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logo" type="Sprite" parent="."]
+position = Vector2( 971.115, 305.482 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 7 )
+
+[node name="PlayButton" type="Button" parent="."]
+margin_left = 857.54
+margin_top = 549.463
+margin_right = 1076.54
+margin_bottom = 667.463
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.054902, 0.556863, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.596078, 0.890196, 0.564706, 1 )
+text = "PLAY"
+flat = true
+script = ExtResource( 9 )
+
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]
