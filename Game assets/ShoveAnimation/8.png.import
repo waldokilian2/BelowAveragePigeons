@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/heart.png-8edda0f5ec459074497da6d43353c418.stex"
+path="res://.import/8.png-37bce3ec4b5a08abd4dea26ad3b3c3be.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game assets/heart.png"
-dest_files=[ "res://.import/heart.png-8edda0f5ec459074497da6d43353c418.stex" ]
+source_file="res://Game assets/ShoveAnimation/8.png"
+dest_files=[ "res://.import/8.png-37bce3ec4b5a08abd4dea26ad3b3c3be.stex" ]
 
 [params]
 

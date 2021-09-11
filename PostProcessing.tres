@@ -1,0 +1,18 @@
+[gd_resource type="Environment" format=2]
+
+[resource]
+background_mode = 4
+auto_exposure_max_luma = 0.62
+ssao_radius = 41.99
+ssao_intensity = 53.51
+ssao_light_affect = 0.14
+ssao_quality = 2
+dof_blur_far_distance = 0.61
+dof_blur_far_transition = 0.61
+dof_blur_near_distance = 0.06
+glow_enabled = true
+glow_intensity = 3.17
+glow_strength = 0.59
+glow_bloom = 0.51
+glow_blend_mode = 1
+glow_bicubic_upscale = true

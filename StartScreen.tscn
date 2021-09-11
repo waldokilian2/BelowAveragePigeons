@@ -1,0 +1,100 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Game assets/Backgrounds/layers/rocks.png" type="Texture" id=1]
+[ext_resource path="res://Game assets/Backgrounds/layers/sky.png" type="Texture" id=2]
+[ext_resource path="res://Game assets/Backgrounds/layers/clouds_1.png" type="Texture" id=3]
+[ext_resource path="res://Game assets/Backgrounds/layers/ground_3.png" type="Texture" id=4]
+[ext_resource path="res://Game assets/Backgrounds/layers/ground_1.png" type="Texture" id=5]
+[ext_resource path="res://Game assets/Backgrounds/layers/ground_2.png" type="Texture" id=6]
+[ext_resource path="res://ParallaxBackground.gd" type="Script" id=7]
+[ext_resource path="res://Game assets/logo.png" type="Texture" id=8]
+[ext_resource path="res://Game assets/StartButton.png" type="Texture" id=9]
+[ext_resource path="res://StartButton.gd" type="Script" id=10]
+[ext_resource path="res://Game assets/Ambient Music.wav" type="AudioStream" id=11]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logo" type="Sprite" parent="."]
+position = Vector2( 944, 368 )
+texture = ExtResource( 8 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enable = true
+script = ExtResource( 7 )
+
+[node name="far_hills2" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -6
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sky_sprite" type="Sprite" parent="ParallaxBackground/far_hills2"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="far_hills" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -4
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="far_hills_sprite" type="Sprite" parent="ParallaxBackground/far_hills"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -3
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="clouds_sprite" type="Sprite" parent="ParallaxBackground/clouds"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="mountains" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -2
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="mountains_sprite" type="Sprite" parent="ParallaxBackground/mountains"]
+texture = ExtResource( 5 )
+centered = false
+
+[node name="forrest_far" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -2
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="forrest_far_sprite" type="Sprite" parent="ParallaxBackground/forrest_far"]
+texture = ExtResource( 6 )
+centered = false
+
+[node name="forrest_close" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.7, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="forrest_close_sprite" type="Sprite" parent="ParallaxBackground/forrest_close"]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="StartButton" type="Button" parent="."]
+margin_left = 784.0
+margin_top = 824.0
+margin_right = 1102.0
+margin_bottom = 959.0
+icon = ExtResource( 9 )
+flat = true
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -12.571
+autoplay = true
+
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_StartButton_pressed"]
