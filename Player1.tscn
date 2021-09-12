@@ -58,7 +58,7 @@ position = Vector2( -1.41425, 0 )
 scale = Vector2( 0.547343, 0.547343 )
 frames = ExtResource( 1 )
 animation = "idle"
-frame = 3
+frame = 16
 playing = true
 __meta__ = {
 "_edit_group_": true
@@ -101,7 +101,9 @@ animation = "shove"
 
 [node name="AttackDurationTimer" type="Timer" parent="."]
 
-[node name="HitArea" type="Area2D" parent="."]
+[node name="HitArea" type="Area2D" parent="." groups=[
+"player1",
+]]
 
 [node name="HitBox" type="CollisionShape2D" parent="HitArea"]
 shape = SubResource( 5 )

@@ -19,7 +19,6 @@ func set_current(new_value: int) -> void:
 	current = new_value
 	current = clamp(current, 0, max_amount)
 	emit_signal("changed", current)
-	print('Current health: ' + str(current))
 	if current == 0:
 		emit_signal("depleted")
 
