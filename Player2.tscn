@@ -57,8 +57,7 @@ script = ExtResource( 3 )
 scale = Vector2( 0.547, 0.547 )
 frames = ExtResource( 1 )
 animation = "idle"
-
-frame = 18
+frame = 1
 playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="Animated Sprite"]

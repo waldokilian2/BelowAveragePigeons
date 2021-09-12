@@ -8,4 +8,4 @@ signal heal_player2(health_value)
 
 
 const GRAVITY: = 35
-var health_value: = 10
+var health_value: = 20

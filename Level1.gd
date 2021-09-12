@@ -35,7 +35,7 @@ func _on_FoodDropperTimer_timeout() -> void:
 	var food_item = food_list[rand_range(0, food_list.size())].instance()
 	print(food_item)
 	var random_x = rand_range(10, 1850)
-	var random_y = rand_range(0, 900)
+	var random_y = rand_range(0, 850)
 	food_item.global_position = Vector2(random_x, random_y)
 	food_item.connect("heal_player1", player1, "heal")
 	food_item.connect("heal_player2", player2, "heal")
