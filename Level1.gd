@@ -5,16 +5,19 @@ onready var player2: = $Player2
 onready var timer: = $HealthTickTimer
 
 func _ready():
-	var berry = preload("res://Berry.tscn").instance()
+	var random_x
+	var random_y
 	var carrot = preload("res://Carrot.tscn").instance()
 	var clover = preload("res://Clover.tscn").instance()
 	var pom = preload("res://Pom.tscn").instance()
 	
-	var random_x = rand_range(0, 1920)
-	var random_y = rand_range(0, 1080)
-	berry.global_position = Vector2(random_x, random_y)
-	
-	add_child(berry)
+	randomize()
+	for i in range(10):	
+		random_x = rand_range(0, 1920)
+		random_y = rand_range(0, 1080)
+		var berry = preload("res://Berry.tscn").instance()
+		berry.global_position = Vector2(random_x, random_y)
+		add_child(berry)
 
 func _on_HealthTickTimer_timeout() -> void:
 	player1.health.set_current(player1.health.current-1)
