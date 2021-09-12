@@ -13,8 +13,8 @@ func _ready():
 	
 	randomize()
 	for i in range(10):	
-		random_x = rand_range(0, 1920)
-		random_y = rand_range(0, 1080)
+		random_x = rand_range(10, 1850)
+		random_y = rand_range(0, 900)
 		var berry = preload("res://Berry.tscn").instance()
 		berry.global_position = Vector2(random_x, random_y)
 		add_child(berry)
