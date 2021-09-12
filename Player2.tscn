@@ -57,7 +57,8 @@ script = ExtResource( 3 )
 scale = Vector2( 0.547, 0.547 )
 frames = ExtResource( 1 )
 animation = "idle"
-frame = 4
+
+frame = 18
 playing = true
 
 [node name="ProgressBar" type="ProgressBar" parent="Animated Sprite"]
@@ -97,7 +98,9 @@ animation = "shove"
 
 [node name="AttackDurationTimer" type="Timer" parent="."]
 
-[node name="HitArea" type="Area2D" parent="."]
+[node name="HitArea" type="Area2D" parent="." groups=[
+"player2",
+]]
 
 [node name="HitBox" type="CollisionShape2D" parent="HitArea"]
 shape = SubResource( 5 )

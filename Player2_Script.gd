@@ -94,3 +94,7 @@ func _on_AttackDurationTimer_timeout() -> void:
 
 func _on_ShoveAnimation_animation_finished() -> void:
 	attack_animation.stop()
+
+
+func heal(health_value) -> void:
+	health.set_current(health.current + health_value)
