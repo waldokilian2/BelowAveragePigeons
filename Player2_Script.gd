@@ -81,7 +81,6 @@ func _on_fall_zone_body_entered(body):
 		health.set_current(0)
 
 func _on_Health_depleted() -> void:
-	print("game over")
 	emit_signal("player_death","Player2")
 
 func _on_HitArea_area_entered(area: Area2D) -> void:
@@ -94,3 +93,7 @@ func _on_AttackDurationTimer_timeout() -> void:
 
 func _on_ShoveAnimation_animation_finished() -> void:
 	attack_animation.stop()
+
+
+func heal(health_value) -> void:
+	health.set_current(health.current + health_value)
